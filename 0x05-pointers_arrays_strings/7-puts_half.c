@@ -1,44 +1,20 @@
 #include "main.h"
+
 /**
- * puts_half - print half of a string.
- * @str: character
+ * *_strcpy - copies the string pointed to by src.
+ *
+ * @dest: pointer to the buffer.
+ * @src: pointer to the source string.
+ * Return: char
  */
-void puts_half(char *str)
+char *_strcpy(char *dest, const char *src)
 {
-	int m, n, i, j;
+    int i;
 
-	m = string_length(str) / 2;
-
-	if (string_length(str) % 2 == 0)
-	{
-		for (i = m; i < string_length(str); i++)
-		{
-			_putchar(str[i]);
-		}
-	}
-	else if (string_length(str) % 2 != 0)
-	{
-		n = (string_length(str) - 1) / 2;
-		for (j = n; j <= string_length(str); j++)
-		{
-			_putchar(str[j]);
-		}
-	}
-	_putchar('\n');
+    for (i = 0; src[i] != '\0'; i++) {
+        dest[i] = src[i];
+    }
+    dest[i] = '\0';  // Null-terminate the destination string
+    return dest;
 }
 
-/**
-  * string_length - finds the length of a string.
-  * Return: length of c.
-  * @pointer: pointer.
-  */
-int string_length(char *pointer)
-{
-	int c = 0;
-
-	while (*(pointer + c) != '\0')
-	{
-		c++;
-	}
-	return (c);
-}
