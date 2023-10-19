@@ -1,41 +1,43 @@
+/*
+ * File: 6-cap_string.c
+ * Auth: PT
+ */
+
 #include "main.h"
 
 /**
- * *cap_string - capitalizes all words of a string.
+ * cap_string - Capitalizes all words of a string.
+ * @str: The string to be capitalized.
  *
- * @str: hold character.
- * Return: string.
+ * Return: A pointer to the changed string.
  */
 char *cap_string(char *str)
 {
-	int i;
+	int index = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	while (str[index])
 	{
-		if (i == 0)
-		{
-			if ((str[i] >= 97 && str[i] <= 122))
-			{
-				str[i] = str[i] - 32;
-				continue;
-			}
-		}
-		else if (str[i] == ' ')
-		{
-			++i;
-			if (str[i] >= 97 && str[i] <= 122)
-			{
-				str[i] = str[i] - 32;
-				continue;
-			}
-		}
-		else
-		{
-			if (str[i] >= 65 && str[i] <= 90)
-			{
-				str[i] = str[i] + 32;
-			}
-		}
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
+
+		index++;
 	}
+
 	return (str);
 }
